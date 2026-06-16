@@ -1,13 +1,14 @@
-function Profile(){
-  const skill1="React";
-  const skill2="JavaScript";
-  const skill3="Vite";
-
+function Profile({ name, skills, isStudent}){
   return(
     <>
-    <h1>arun</h1>
-    <p>my skills are {skill1},{skill2},{skill3} </p>
+      <h2>{name}</h2>
+      
+      <p>Skills: {skills.join(',')}</p>
+    
+    <p>
+      Status : {isStudent ? "Student" : "professional"}    
+    </p>
     </>
-  )
+  );
 }
 export default Profile;
