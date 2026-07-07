@@ -1,14 +1,9 @@
-import Card from './Card.jsx'
-
 function App() {
-
   return (
-    <>
-    <Card />
-    <Card />
-    <Card />
-    </>
+    <div className="App">
+      <h1>Hello World!</h1>
+    </div>
   );
 }
 
-export default App
+export default App;

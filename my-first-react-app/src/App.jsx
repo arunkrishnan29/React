@@ -1,6 +1,7 @@
 import Profile from "./Profile";
 import ActionPanel from"./ActionPanel";
 import UserCard from "./UserCard";
+import SkillBoard from "./SkillBoard";
 
 
 function App() {
@@ -16,6 +17,12 @@ function App() {
         name="Harish"
         skills={["Django", "Python", "SQL"]}
         isStudent={false}
+      />
+
+      <Profile 
+      name="Aadhi"
+      skills={["C programming, Python , Github"]}
+      isStudent={true}
       />
       <ActionPanel/>
       <UserCard
@@ -45,7 +52,7 @@ function App() {
       messageCount={8}
       status=""
       />
-
+  <SkillBoard/>
    </>
 
   );
