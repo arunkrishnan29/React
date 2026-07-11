@@ -33,16 +33,18 @@ function SkillBoard() {
         else{
           color="lightgreen";
         }
-        <p style={{
-            
-          backgroundColor: color
-          }}> 
-          </p>
-        <div key={skill.id}>
-          <h3>{skill.name}</h3>
-          <p>{skill.level}</p>
-        </div>
-
+        return(
+          <div key={skill.id}>
+            <p style={{
+              backgroundColor: color
+            }}>
+            </p>
+            <div>
+              <h3>{skill.name}</h3>
+              <p>{skill.level}</p>
+            </div>
+          </div>
+        );
       })
       }
     </div>
