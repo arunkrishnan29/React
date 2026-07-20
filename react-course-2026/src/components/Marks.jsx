@@ -1,8 +1,8 @@
-function Marks(){
-  const marks=76;
+function Marks(props){
   return(<div>
-    <p>Marks : {marks}</p>
-    <p>Result : {marks >= 50 ? "Pass" : "Fail"}</p>
+    
+    <p>Marks : {props.marks}</p>
+    <p>Result : {props.marks >= 50 ? "Pass" : "Fail"}</p>
   </div>
   );
 }

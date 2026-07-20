@@ -1,23 +1,14 @@
-function Skills() {
-
-  const skills = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "C Programming"
-  ];
-
+function Skills({ skills }) {
   return (
     <div>
-
       <h2>Skills</h2>
-
-      <p>{skills.join(", ")}</p>
-
-    </div>
+      <ul>
+        {skills.map((skill,index) => (
+          <li key={index} >{skill}</li>
+        ))}
+      </ul>
+      </div>
   );
-
 }
 
 export default Skills;
