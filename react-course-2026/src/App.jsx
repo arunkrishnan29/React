@@ -69,9 +69,9 @@ function App(){
     <br />
 
     <input 
-    placeholder="enter text" onChange={(e) => displayinput(e.target.value)} >
+    placeholder="enter text" onChange={(e) => displayinput(e.target.value)}
 
-    </input>
+    />
 
     </button>
 
