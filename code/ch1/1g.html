@@ -1,0 +1,55 @@
+<!--
+
+1g. We're going to load the DayJS external library on the website (DayJS
+is an external library that helps us work with dates easier).
+• To load DayJS, create a ‹script> above your code, and load the URL:
+https://unpkg.com/supersimpledev/dayjs.js
+• After DayJS is loaded, use the code: dayjs(). format (' MMMM D')
+to get the current date. Display
+Sources
+this result in the console.
+
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script type="text/babel">
+      let name="Arunkrishnan";
+      let price=10;
+      let sockPrice=10;
+      let tshirtPrice=8;
+      let shippingCost=5;
+      let totalCost=shippingCost+sockPrice+tshirtPrice*2;
+      console.log(totalCost);
+      let date=(dayjs().format('MMMM D'));
+      console.log(date);
+      const content=(
+      <div >
+        <p>Sock: {sockPrice}$ </p>
+        <p>Tshirt: {tshirtPrice}$ </p>
+        <p>ShippingCost: {shippingCost}$ </p>
+        <p>Total: {totalCost}$ </p>
+
+        <button> Place the order </button> 
+      </div>
+      );
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(content);
+
+    </script>
+  </body>
+</html>

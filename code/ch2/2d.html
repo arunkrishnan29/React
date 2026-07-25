@@ -1,0 +1,58 @@
+<!--
+2d. Continuing from 2c, create a new component called LoginForm,
+and move the textboxes and buttons (all the login-related code)
+into this component. Then, inside <App›, use ‹LoginForm» to create
+the textboxes and buttons.
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script type="text/babel">
+
+    function LoginForm(){
+      return(
+      <div>
+        
+        <div>
+          <input placeholder="abc@email.com" type="text"/>
+        </div>
+
+        <div>
+        <input placeholder="********" type="password"/>
+        </div>
+
+        <button>Login</button>
+        <button>Sign up</button>
+      </div>
+      );
+    }
+    function App(){
+      return(
+        <div>
+             <p>Hello , welcome to my website</p>
+           <LoginForm/>
+        </div>
+      );
+    }
+      const container = document.querySelector('.js-container');
+      const root=ReactDOM.createRoot(container);
+      
+      root.render(<App/>);
+
+    </script> 
+  </body>
+</html> 

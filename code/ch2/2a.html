@@ -1,0 +1,37 @@
+<!--
+2a. Create an ‹App> component that returns a paragraph with the text:
+"Hello, welcome to my website" inside.
+Then, render this <App>.
+Hello, welcome to my website
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script type="text/babel">
+
+    function App(){
+      return(
+      <div >
+        <p>Hello , welcome to my website</p>
+      </div>
+      );}
+      const container = document.querySelector('.js-container');
+      const root=ReactDOM.createRoot(container);
+      
+      root.render(<App/>);
+
+    </script> 
+  </body>
+</html> 

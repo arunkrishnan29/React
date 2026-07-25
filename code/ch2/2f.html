@@ -1,0 +1,65 @@
+<!--
+2f. Display 2 more products on the website: tennis balls and a t-shirt.
+Instead of duplicating the code, create a
+Tennis balls
+Plain T-Shirt
+‹ProductDetails» component, and use
+props to make it reusable. Then, display
+Price: $6.00
+Price: $7.99
+3 ‹ProductDetails» on the website for
+Add to Cart
+Add to Cart
+the socks, tennis balls, and t-shirt.
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script type="text/babel">
+      const ProductDetails=[
+        product1={
+          productName:"Sock",
+          productPrice:82.90,
+        },
+        product2={
+          productName:"tshirt",
+          productPrice:260.40,          
+        }    
+    
+      function ProductDertails(){
+        return(
+          <div>
+            <div>
+                <p>{productName}</p>
+            </div>
+            <div>
+                <p>price: ₹{sockPrice}</p>
+            </div>
+            <div>
+              <button> add to Cart</button>
+            </div>
+          </div>
+            );
+      }
+
+      const container = document.querySelector('.js-container');
+      const root=ReactDOM.createRoot(container);
+      
+      root.render(<App/>);
+
+    </script> 
+  </body>
+</html> 
