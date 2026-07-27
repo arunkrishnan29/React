@@ -1,18 +1,14 @@
 <!--
-2f. Display 2 more products on the website: tennis balls and a t-shirt.
-Instead of duplicating the code, create a
-Tennis balls
-Plain T-Shirt
-‹ProductDetails» component, and use
-props to make it reusable. Then, display
-Price: $6.00
-Price: $7.99
-3 ‹ProductDetails» on the website for
-Add to Cart
-Add to Cart
-the socks, tennis balls, and t-shirt.
+2g. Continuing from 2f, some products can have
+a discount. Add a prop to ‹ProductDetails›
+called discountprice. If discountPrice exists,
+display it under the original price.
+- Give the socks product a discount price of $5.45
+Cotton socks
+Price: $10.90
+Discount price: $5.45
+Add to Cart |
 -->
-
 
 <!DOCTYPE html>
 <html>
@@ -39,6 +35,11 @@ function ProductDetails(props){
                 <p>price: ₹{props.productPrice}</p>
             </div>
             <div>
+              {props.productDiscountPrice && (
+                <p>Discount Price: ₹{props.productDiscountPrice}</p>
+              )}
+          </div>
+            <div>
               <button> Add to Cart</button>
             </div>
           </div>
@@ -50,6 +51,7 @@ function App(){
       <ProductDetails
         productName="Cotton Socks"
         productPrice={82.90}
+        productDiscountPrice={5.45}
       />
       <ProductDetails
         productName="Tennis Balls"

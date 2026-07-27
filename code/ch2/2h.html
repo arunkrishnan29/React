@@ -1,17 +1,17 @@
 <!--
-2f. Display 2 more products on the website: tennis balls and a t-shirt.
-Instead of duplicating the code, create a
-Tennis balls
-Plain T-Shirt
-‹ProductDetails» component, and use
-props to make it reusable. Then, display
-Price: $6.00
-Price: $7.99
-3 ‹ProductDetails» on the website for
+2h. If a product has a discountPrice also cross out the original price.
+- To cross out text, surround it with the element: <del>...</del>
+- Don't cross out the original price if there's no
+Cotton socks
+discount. To check if discountPrice does not exist,
+use !discountPrice
+- There are several ways to do this exercise. As long
+Priee: $10.90
+Discount price: $5.45
+as you get the final result, you're good!
 Add to Cart
-Add to Cart
-the socks, tennis balls, and t-shirt.
 -->
+
 
 
 <!DOCTYPE html>
@@ -36,8 +36,18 @@ function ProductDetails(props){
                 <p>{props.productName}</p>
             </div>
             <div>
-                <p>price: ₹{props.productPrice}</p>
+              {props.productDiscountPrice && (
+                <>
+                <del><p>price: ₹{props.productPrice}</p></del>
+                <p>Discount Price: ₹{props.productDiscountPrice}</p>
+                </>
+                )}
             </div>
+            <div>
+              {!props.productDiscountPrice &&( 
+                <p>Price: ₹{props.productPrice}</p>
+              )}
+          </div>
             <div>
               <button> Add to Cart</button>
             </div>
@@ -49,7 +59,8 @@ function App(){
     <div>
       <ProductDetails
         productName="Cotton Socks"
-        productPrice={82.90}
+        productPrice={82.91}
+        productDiscountPrice={75.45}
       />
       <ProductDetails
         productName="Tennis Balls"

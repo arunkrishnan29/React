@@ -1,17 +1,11 @@
 <!--
-2f. Display 2 more products on the website: tennis balls and a t-shirt.
-Instead of duplicating the code, create a
-Tennis balls
-Plain T-Shirt
-‹ProductDetails» component, and use
-props to make it reusable. Then, display
-Price: $6.00
-Price: $7.99
-3 ‹ProductDetails» on the website for
-Add to Cart
-Add to Cart
-the socks, tennis balls, and t-shirt.
+2i. JavaScript has a feature called the ternary operator:
+const result = valuel ? value2 : value3;
+If value1 is true, then the result is value2. Else, the result is value3.
+- This lets us insert an if-else statement directly in the JSX.
+- Update the previous exercise to use a ternary operator in the JSX.
 -->
+
 
 
 <!DOCTYPE html>
@@ -35,10 +29,15 @@ function ProductDetails(props){
             <div>
                 <p>{props.productName}</p>
             </div>
+
             <div>
+              {props.productDiscountPrice ?
+                <>
+                <p><del>price: ₹{props.productPrice}</del></p>
+                <p>Discount Price: ₹{props.productDiscountPrice}</p>
+                </>:
                 <p>price: ₹{props.productPrice}</p>
-            </div>
-            <div>
+              }
               <button> Add to Cart</button>
             </div>
           </div>
@@ -49,7 +48,8 @@ function App(){
     <div>
       <ProductDetails
         productName="Cotton Socks"
-        productPrice={82.90}
+        productPrice={82.91}
+        productDiscountPrice={75.45}
       />
       <ProductDetails
         productName="Tennis Balls"

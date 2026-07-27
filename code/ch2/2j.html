@@ -1,17 +1,15 @@
 <!--
-2f. Display 2 more products on the website: tennis balls and a t-shirt.
-Instead of duplicating the code, create a
-Tennis balls
-Plain T-Shirt
-‹ProductDetails» component, and use
-props to make it reusable. Then, display
-Price: $6.00
-Price: $7.99
-3 ‹ProductDetails» on the website for
-Add to Cart
-Add to Cart
-the socks, tennis balls, and t-shirt.
+2j. We'll add an image at the top of each Product. In your browser, go to
+supersimple.dev/images/_(replace_with cotton-socks.png,
+tennis-balls.png, and plain-t-shirt. png). Download the images.
+- In ‹ProductDetails› add an ‹img> at the top, and add a prop called
+imageSrc. Give the <img> the attribute src={imageSrc} (this sets the
+src attribute to the value of the imagesre prop).
+- Then in <App›, give each ‹ProductDetails› a prop imagesrc="_"
+(replace with the file name of the image, like cotton-socks. png)
 -->
+
+
 
 
 <!DOCTYPE html>
@@ -33,12 +31,18 @@ function ProductDetails(props){
         return(
           <div>
             <div>
-                <p>{props.productName}</p>
+              <img src={props.imageSrc} width="150" />
+              <p>{props.productName}</p>
             </div>
+
             <div>
+              {props.productDiscountPrice ?
+                <>
+                <p><del>price: ₹{props.productPrice}</del></p>
+                <p>Discount Price: ₹{props.productDiscountPrice}</p>
+                </>:
                 <p>price: ₹{props.productPrice}</p>
-            </div>
-            <div>
+              }
               <button> Add to Cart</button>
             </div>
           </div>
@@ -48,14 +52,18 @@ function App(){
   return(
     <div>
       <ProductDetails
+        imageSrc= "images/socks.png"
         productName="Cotton Socks"
-        productPrice={82.90}
+        productPrice={82.91}
+        productDiscountPrice={75.45}
       />
       <ProductDetails
-        productName="Tennis Balls"
-        productPrice={65.80}
+        imageSrc= "images/tennisball.png"
+        productName="Tennis Ball"
+        productPrice={40.80}
       />
       <ProductDetails
+       imageSrc= "images/tshirt.png"
         productName="Plain Tshirt"
         productPrice={212.90}
       />
