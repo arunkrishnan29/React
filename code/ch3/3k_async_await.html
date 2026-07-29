@@ -1,11 +1,16 @@
 <!--
-3i. Instead of clicking the "Send" button, we can also send a message by
-pressing "Enter" on our keyboard. We'll add this feature to the project.
-• Add a new event prop onkeyDown to the ‹input›. This runs a
-function each time we press a key on our keyboard.
-• The function gets an event parameter, and we can get the key that
-was pressed using event. key
-• If event. key is 'Enter', send the message.
+3k. In the real world, the Chatbot does not respond immediately, it takes
+some time to think, and then respond (see the final Chatbot project).
+We'll learn how to handle this situation.
+• Change Chatbot. getResponse to Chatbot. getResponseAsync (for
+this function, the Chatbot thinks for a second, and then responds).
+• Chatbot. getResponseAsync returns a promise (promise = a value
+that is not available yet, but will be available in the future).
+• Add await in front of chatbot. getResponseAsyne to wait for it to
+finish (wait for the value to be available before continuing).
+• Add async in front of function sendMessage() (because we can
+only use await inside an async function).
+• As a review, this is a JavaScript feature called async / await
 
 -->
 
@@ -28,39 +33,47 @@ was pressed using event. key
     <script type="text/babel">
       function ChatInput({ chatMessages, setChatMessages }) {
         const [inputText, setInputText] = React.useState('');
+        const [isLoading, setIsLoading] = React.useState(false);
 
         function saveInputText(event) {
           setInputText(event.target.value);
         }
 
-        function sendMessage() {
-          const newChatMessages = [
-            ...chatMessages,
-            {
-              message: inputText,
-              sender: 'user',
-              id: crypto.randomUUID()
-            }
-          ];
+async function sendMessage() {
+  const newChatMessages = [
+    ...chatMessages,
+    {
+      message: inputText,
+      sender: 'user',
+      id: crypto.randomUUID()
+    }
+  ];
 
-          setChatMessages(newChatMessages);
+  setChatMessages(newChatMessages);
+  setInputText('');
 
-          const response = Chatbot.getResponse(inputText);
-          setChatMessages([
-            ...newChatMessages,
-            {
-              message: response,
-              sender: 'robot',
-              id: crypto.randomUUID()
-            }
-          ]);
+  setIsLoading(true);
 
-          setInputText('');
-        }
+  const response = await Chatbot.getResponseAsync(inputText);
+
+  setIsLoading(false);
+
+  setChatMessages([
+    ...newChatMessages,
+    {
+      message: response,
+      sender: 'robot',
+      id: crypto.randomUUID()
+    }
+  ]);
+}
       
           const handleOnKeydown=(event)=>{
             if(event.key ==='Enter'){
-                {sendMessage}
+                sendMessage();
+            }
+            else if(event.key ==='Escape'){
+                setInputText('');
             }
           }
       
@@ -72,11 +85,13 @@ was pressed using event. key
               size="30"
               onChange={saveInputText}
               value={inputText}
+              onKeyDown={handleOnKeydown}
+
             />
             <button
               onClick={sendMessage}
-              onKeyDown={handleOnKeydown}
             >Send</button>
+            {isLoading && <p>Loading..</p>}
           </>
         );
       }
