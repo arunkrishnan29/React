@@ -1,6 +1,10 @@
 <!--
-3a. Create a button with the text "Clicked O times". When you click this
-button, display "Clicked" in the console. (Hint: use onclick)
+We'll create a display-as-you-type app.
+3g. Start from an empty React website and create an ‹input> and a ‹p>.
+As you type in the ‹input›, the text you type should also appear in
+the <p› with "Hello " in front of it. (Hint: use onChange, save the text in
+state, and insert it in the JSX).
+
 -->
 
 
@@ -19,15 +23,19 @@ button, display "Clicked" in the console. (Hint: use onclick)
     <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 
     <script type="text/babel">
+
 function App(){
-  return(
-        <div>
-          <button onClick={() => click()}>Clicked  0 times</button>
-        </div>
-  );}
-function click(){
-    console.log(`Clicked`);
-}
+        const [text,setText]=React.useState();
+
+return(
+  <div>
+  <input id="e" placeholder="typehere" type="text" onChange={(e)=> setText(e.target.value)}/>
+  <p>{text}</p>
+  </div>
+);}
+
+
+
 
       const container = document.querySelector('.js-container');
       const root=ReactDOM.createRoot(container);

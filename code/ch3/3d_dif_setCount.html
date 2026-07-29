@@ -1,7 +1,9 @@
 <!--
-3a. Create a button with the text "Clicked O times". When you click this
-button, display "Clicked" in the console. (Hint: use onclick)
+3d. Separate the counter into a component. Then, use this component to
+create 2 counters on the website. Click both counters a few times to
+test it. Notice, each counter can have a different count.
 -->
+
 
 
 <!DOCTYPE html>
@@ -19,15 +21,28 @@ button, display "Clicked" in the console. (Hint: use onclick)
     <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 
     <script type="text/babel">
-function App(){
+function Counter({start}){
+  const [count,setCount]=React.useState(start);
   return(
         <div>
-          <button onClick={() => click()}>Clicked  0 times</button>
+          <button onClick={() =>{ setCount(prev => prev + 1)} }>
+        Clicked  {count} times</button>
         </div>
-  );}
-function click(){
-    console.log(`Clicked`);
+  );
 }
+
+
+function App(){
+return(
+  <div>
+
+    <Counter start={0}/>
+    <Counter start={2}/>
+
+  </div>
+);
+}
+
 
       const container = document.querySelector('.js-container');
       const root=ReactDOM.createRoot(container);

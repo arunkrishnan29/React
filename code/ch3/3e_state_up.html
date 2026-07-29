@@ -1,6 +1,6 @@
 <!--
-3a. Create a button with the text "Clicked O times". When you click this
-button, display "Clicked" in the console. (Hint: use onclick)
+3e. Make both counters display the same count. You can do this by lifting
+the state up, and sharing it between the counters.
 -->
 
 
@@ -19,15 +19,41 @@ button, display "Clicked" in the console. (Hint: use onclick)
     <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 
     <script type="text/babel">
-function App(){
+
+  //start=0 where should the number will start
+
+function Counter({count,inc}){
+  
   return(
+    <div>
+      <button onClick={inc} >
+        Clicked  {count} {count<=1? "time":"times"}</button>
+      </div>
+      );
+    }
+    
+    
+    function App(){
+      
+      const [count,setCount]=React.useState(0);
+      
+      function increasecount(){
+        setCount(count + 1);
+      }
+      return(
         <div>
-          <button onClick={() => click()}>Clicked  0 times</button>
-        </div>
-  );}
-function click(){
-    console.log(`Clicked`);
+
+    <Counter count={count} inc={increasecount}/>
+    <Counter count={count} inc={increasecount}/>
+
+  </div>
+);
 }
+
+
+
+
+
 
       const container = document.querySelector('.js-container');
       const root=ReactDOM.createRoot(container);
