@@ -6,6 +6,8 @@ import Marks from "./components/Marks.jsx"
 import Hobbies from "./components/Hobbies.jsx";
 import Counter from "./components/tasks/Counter.jsx"
 import Clock from "./components/tasks/Clock.jsx"
+import FocusInput from "./components/tasks/FocusInput.jsx"
+import SearchableSkills from "./components/tasks/SearchableSkills.jsx"
 
 function display(){
   console.log("Hello Everyone");
@@ -80,6 +82,10 @@ function App(){
     <Counter/>
 
     <Clock />
+
+    <FocusInput/>
+
+    <SearchableSkills/>
 
     </>
   );

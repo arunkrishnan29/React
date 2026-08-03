@@ -20,18 +20,28 @@
 // button click needed — that's the point of a controlled input.
 
 import { useState } from "react";
+import { skills }from "../SkillBoard";
 
-function SearchableSkills({ skills }) {
-  // TODO: create the searchTerm state here
+function SearchableSkills(skills) {
+
+  const[searchTerm,setSearchTerm]=useState("");
+
+
+  search((v)=>{
+    setSearchTerm(v);
+  })
 
   // TODO: create a filtered array here using .filter()
-
+  
   return (
     <div>
       <h2>Search Skills</h2>
-      {/* TODO: controlled input here */}
-      <ul>
-        {/* TODO: map over the FILTERED list, not the original skills */}
+
+      <input 
+        value={searchTerm}
+        onChange={()=> search(searchTerm)}
+        <ul>
+        {skills.map("searchtearm")}
       </ul>
       {/* TODO: show "No skills found" when filtered list is empty */}
     </div>

@@ -15,6 +15,16 @@ function SkillBoard() {
      id:3,
      name:"html & css",
      level:"beginner", 
+    },
+    {
+      id:4,
+      name:"java",
+      level:"intermediate"
+    },
+    {
+      id:5,
+      name:"python",
+      level:"beginner"
     }
   ];
 

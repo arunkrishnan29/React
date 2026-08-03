@@ -21,17 +21,33 @@
 
 import { useRef } from "react";
 
-function FocusInput() {
-  // TODO: create the ref here
 
+function FocusInput() { 
+    const inputRef=useRef(null);
+
+function focus(){
+      inputRef.current.focus();
+    
+}
+function displayInput(value){
+  console.log(value)
+}
+
+function clearDisplay(){
+  inputRef.current.value = ""
+}
   return (
     <div>
       <h2>Focus Demo</h2>
-      {/* TODO: attach ref to this input */}
-      <input placeholder="Click the button to focus me" />
-      {/* TODO: add the focus button */}
+    
+      <input placeholder="Click the button to focus me"  ref={inputRef} onChange={(e) => displayInput(e.target.value)}/>
+      <br/>
+      <button onClick={focus}> Focus the input</button>
+      <br/>
+      <button onClick={clearDisplay}> clear </button>
     </div>
   );
 }
 
 export default FocusInput;
+
