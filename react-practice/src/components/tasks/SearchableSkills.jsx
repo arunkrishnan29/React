@@ -18,32 +18,44 @@
 // HOW YOU'LL KNOW IT WORKS: typing "java" should instantly narrow the
 // list to just "JavaScript" (if that's in your skills array), with no
 // button click needed — that's the point of a controlled input.
-
 import { useState } from "react";
-import { skills }from "../SkillBoard";
 
-function SearchableSkills(skills) {
+function SearchableSkills({ skills }) {
 
-  const[searchTerm,setSearchTerm]=useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
 
-  search((v)=>{
-    setSearchTerm(v);
-  })
+  const filteredSkills = skills.filter((skill) =>
+    skill.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  // TODO: create a filtered array here using .filter()
-  
   return (
-    <div>
-      <h2>Search Skills</h2>
+    <div> 
 
-      <input 
+      <h2>Search Skills</h2> 
+
+      <input
         value={searchTerm}
-        onChange={()=> search(searchTerm)}
-        <ul>
-        {skills.map("searchtearm")}
+
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
+      <ul>
+
+        {filteredSkills.length > 0 ? (
+
+          filteredSkills.map((skill, index) => (
+            <li key={index}>{skill}</li>
+          ))
+
+        ) : (
+
+          <p>No skills found</p>
+
+        )}
+
       </ul>
-      {/* TODO: show "No skills found" when filtered list is empty */}
+
     </div>
   );
 }

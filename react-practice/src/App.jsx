@@ -61,32 +61,31 @@ function App(){
     />
 
     <Footer/>
+<button onClick={display}>
+  Click Me
+</button>
 
-    <button onClick={display}>
-      Click Me
-    </button>
-    <br></br>
+<br />
 
-    <button onClick={()=>displayname("arunkrishnan")}>
-      Know Name?
-    <br />
-    <br />
+<button onClick={() => displayname("Arunkrishnan")}>
+  Know Name?
+</button>
 
-    <input 
-    placeholder="enter text" onChange={(e) => displayinput(e.target.value)}
+<br />
+<br />
 
-    />
+<input
+  placeholder="Enter text"
+  onChange={(e) => displayinput(e.target.value)}
+/>
 
-    </button>
+<Counter />
 
-    <Counter/>
+<Clock />
 
-    <Clock />
+<FocusInput />
 
-    <FocusInput/>
-
-    <SearchableSkills/>
-
+<SearchableSkills skills={skills} />
     </>
   );
 
