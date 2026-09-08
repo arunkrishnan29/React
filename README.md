@@ -2,6 +2,13 @@
 
 This repository contains my hands-on learning, practice exercises, and projects created while learning React, JavaScript, Node.js, and backend development.
 
+## 🔗 Reference Platforms
+1. [Skiller AI](https://lms.skillerai.tech/) – Learning platform.
+2. [ChatGPT](https://chatgpt.com/) - Ai Assistant
+3. [Claude](https://claude.ai/) - Ai Assistant
+4. [YouTube] – Programming tutorials and educational content.
+5. Online Documentation and Websites – Technical references and additional learning resources. 
+
 ## 📁 Repository Structure
 
 ### `react-course-2026/`
