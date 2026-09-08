@@ -97,7 +97,6 @@ React concepts and practical examples, including:
 Contains standalone projects and experiments, including:
 
 * Chatbot experiments
-* GPU-related research notes
 * Project assets and images
 
 ---
