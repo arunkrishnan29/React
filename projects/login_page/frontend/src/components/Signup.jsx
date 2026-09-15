@@ -1,46 +1,50 @@
 import { useState } from 'react'
-import { loginUser} from '../services/authService'
-import { useAuth } from '../context/AuthContext'
+import { signupUser } from '../services/authService'
 import { useNavigate } from 'react-router-dom'
 
-function Login() {
-  
+function Signup() {
+  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { login } = useAuth()
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+  event.preventDefault()
 
-    try 
-    {
-      const data = await loginUser(email, password)
+  try {
+    const data = await signupUser(username, email, password)
 
-      login(data.user)
+    console.log(data)
 
-      console.log('Login successful')
-
-      navigate('/dashboard')
-    } 
-    catch (error) {
-      console.log(error.message)
-    }
+    navigate('/login')
+  } catch (error) {
+    console.log(error.message)
   }
-
+}
 
   return (
     <div>
-      <h2>Login Page</h2>
+      <h2>Sign Up Page</h2>
 
       <form onSubmit={handleSubmit}>
+
+        <input
+          type="text"
+          placeholder="username"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+        <br />
+        <br />
+
         <input
           type="email"
           placeholder="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
+        <br />
 
         <input
           type={showPassword ? 'text' : 'password'}
@@ -55,24 +59,20 @@ function Login() {
         >
           {showPassword ? 'Hide Password' : 'Show Password'}
         </button>
-
-        {/* BUTTON */}
-        <br />
-
+        <br/>
         <button type="submit">
-          Login
-        </button>
-
-        <button
-          type="button"
-          onClick={() => navigate('/signup')}
-        >
           Sign Up
         </button>
       </form>
 
+      <button
+        type="button"
+        onClick={() => navigate('/login')}
+      >
+        Already have an account? Login
+      </button>
     </div>
   )
 }
 
-export default Login
+export default Signup

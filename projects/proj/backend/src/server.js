@@ -15,7 +15,7 @@ app.use(cors({
 }))
 
 app.get("/",(req,res) => {
-  res.send("If you see this message then the,<br/> Backend is working properly!!");
+  res.send("Backend is working properly!!");
 });
 
 app.get("/api/protected", authenticateToken, (req, res) => {
