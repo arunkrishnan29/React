@@ -10,67 +10,89 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = async (event) => {
-  event.preventDefault()
+    event.preventDefault()
 
-  try {
-    const data = await signupUser(username, email, password)
+    try {
+      const data = await signupUser(username, email, password)
 
-    console.log(data)
+      console.log(data)
 
-    navigate('/login')
-  } catch (error) {
-    console.log(error.message)
+      navigate('/login')
+    } catch (error) {
+      console.log(error.message)
+    }
   }
-}
 
   return (
-    <div>
-      <h2>Sign Up Page</h2>
+    <div className="signup-page">
 
-      <form onSubmit={handleSubmit}>
+      <div className="signup-card">
 
-        <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-        <br />
-        <br />
+        <h2 className="signup-title">
+          Sign Up Page
+        </h2>
 
-        <input
-          type="email"
-          placeholder="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <br />
+        <form className="signup-form" onSubmit={handleSubmit}>
 
-        <input
-          type={showPassword ? 'text' : 'password'}
-          placeholder="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
+          <input
+            className="signup-input"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
 
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
+          <input
+            className="signup-input"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+
+          <div className="password-container">
+
+            <input
+              className="signup-input password-input"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+
+            <button
+              className="password-button"
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? 'Hide Password' : 'Show Password'}
+            </button>
+
+          </div>
+
+          <button
+            className="signup-button"
+            type="submit"
+          >
+            Sign Up
+          </button>
+
+        </form>
+
+        <div
+          className="login-link-section">
+            <p>
+              Already have an account?
+            </p>
+
+         <button className="login-link-button" type="button"
+          onClick={() => navigate('/login')}
         >
-          {showPassword ? 'Hide Password' : 'Show Password'}
+         Login
         </button>
-        <br/>
-        <button type="submit">
-          Sign Up
-        </button>
-      </form>
+      </div>
+      </div>
 
-      <button
-        type="button"
-        onClick={() => navigate('/login')}
-      >
-        Already have an account? Login
-      </button>
     </div>
   )
 }

@@ -1,19 +1,34 @@
 import { useAuth } from '../context/AuthContext'
+import dashboardBg from '../assets/clouds.jpeg'
 
 function Dashboard() {
   const { user, logout } = useAuth()
 
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div className="dashboard-page"
+    style={{ backgroundImage: `url(${dashboardBg})`}}>
 
-      <p>
-        You are logged in as <strong>{user?.username}</strong>
-      </p>
+      <div className="dashboard-card">
 
-      <button onClick={logout}>
-        Logout
-      </button>
+        <h1 className="dashboard-title">
+          Dashboard
+        </h1>
+
+        <p className="dashboard-text">
+          You are logged in as <strong className="dashboard-username">
+            {user?.username}
+          </strong>
+        </p>
+
+        <button
+          className="logout-button"
+          onClick={logout}
+        >
+          Logout
+        </button>
+
+      </div>
+
     </div>
   )
 }

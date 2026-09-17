@@ -30,49 +30,79 @@ function Login() {
   }
 
 
-  return (
-    <div>
-      <h2>Login Page</h2>
+return (
+  <div className="login-page">
+
+    <div className="login-card">
+
+      <div className="login-header">
+        <h1>Welcome Back</h1>
+        <p>Login to your account</p>
+      </div>
 
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
 
-        <input
-          type={showPassword ? 'text' : 'password'}
-          placeholder="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
+        <div className="form-group">
+          <label>Email</label>
 
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-        >
-          {showPassword ? 'Hide Password' : 'Show Password'}
-        </button>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
 
-        {/* BUTTON */}
-        <br />
+
+<div className="form-group">
+
+  <label>Password</label>
+
+  <div className="password-wrapper">
+
+    <input
+      type={showPassword ? 'text' : 'password'}
+      placeholder="Enter your password"
+      value={password}
+      onChange={(event) => setPassword(event.target.value)}
+    />
+
+    <button
+      type="button"
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      {showPassword ? 'Hide' : 'Show'}
+    </button>
+
+  </div>
+
+</div>
+
 
         <button type="submit">
           Login
         </button>
 
+      </form>
+
+
+      <div className="signup-section">
+        <p>
+          Don't have an account?
+        </p>
+
         <button
           type="button"
           onClick={() => navigate('/signup')}
         >
-          Sign Up
+          Create account
         </button>
-      </form>
+      </div>
 
     </div>
-  )
+
+  </div>
+)
 }
 
 export default Login
