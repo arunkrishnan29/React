@@ -1,11 +1,10 @@
+const pool = require("./db/db");
 const express =require("express");
 const cors = require("cors");
-const pool = require("./db/db");
 const authRoutes = require("./routes/authRoutes");
 const authenticateToken = require("./middleware/authMiddleware");
 
 const app =express();
-
 app.use(express.json());
 
 const PORT =5000;
@@ -27,7 +26,9 @@ app.get("/api/protected", authenticateToken, (req, res) => {
 
 app.get("/db-test", async (req,res) =>{
   try{
+    
     const result =await pool.query("SELECT NOW()");
+
     res.json(result.rows);
   }catch (error){
     console.error("Database connection error:",error);
